@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+  
+  
+  
   def index
     matching_boards = Board.all
 
@@ -12,7 +15,7 @@ class BoardsController < ApplicationController
 
     matching_boards = Board.where({ :id => the_id })
 
-    @the_board = matching_boards.at(0)
+    @the_board = Board.find_by(id: the_id)
 
     @matching_posts = Post.where({ :board_id => @the_board.id })
 
